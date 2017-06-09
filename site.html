@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>首頁</title>
+    <meta charset="UTF-8">
+    <title>首頁</title>
 </head>
+
 <body>
-	<h1>測試</h1>	
+    <h1>測試</h1>
 </body>
+<script>
+
+
+
+var icalsample = "BEGIN:VCALENDAR\r\n\
+VERSION:2.0\r\n\
+PRODID:-\/\/mycompany.com\/myproduct\/\/NONSGML v1.0\/\/EN\r\n\
+BEGIN:VEVENT\r\n\
+UID:" + uuid + "@mycompany.com\r\n\
+DTSTAMP:" + dtstamp.toISOString() + "\r\n\
+ORGANIZER;CN=mycompany scheduler\r\n\
+DTSTART:" + dtstart.toISOString() + "\r\n\
+DTEND:" + dtend.toISOString() + "\r\n\
+SUMMARY:" + title + "\r\n\
+DESCRIPTION:" + description + "\r\n\
+END:VEVENT\r\n\
+END:VCALENDAR\r\n";
+
+
+var txt="BEGIN:VCALENDAR\r\n\
+VERSION:2.0\r\n\
+BEGIN:VEVENT\r\n\
+URL:http://www.condesign.com.tw/event/170420amgen/\r\n\
+DTSTART:20170520T070000Z\r\n\
+DTEND:20170521T042000Z\r\n\
+SUMMARY:Multi-Modality Treatment for WT RAS Metastatic Colorectal Cancer\r\n\
+DESCRIPTION:親愛的醫師您好：誠摯地邀請您一同參與 Multi-Modality Treatment for WT RAS Metastatic Colorectal Cancer \r\n\
+LOCATION:台南香格里拉3F成功廳\r\n\
+END:VEVENT\r\n\
+END:VCALENDAR\r\n\";
+
+var uriContent = "data:text/calendar," + encodeURIComponent(txt);
+location.href = uriContent;
+</script>
+
 </html>
