@@ -117,7 +117,7 @@ function initSwipeEvent() {
 
 
     $('.arr').click(function(){
-// next
+        // next
         var cNow = parseInt(ChungTool.returnClassNameWithFilter(mom, 'channel_'));
         var cNext = cNow + 1;
 

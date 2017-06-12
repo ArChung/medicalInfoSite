@@ -3400,6 +3400,18 @@ html, body {
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
+.container .arr {
+  width: 59px;
+  height: 31px;
+  background-image: url("../images/arr.png");
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -30px;
+}
+.container.channel_6 .arr {
+  display: none;
+}
 
 .calendarPop {
   position: absolute;
@@ -3459,16 +3471,6 @@ html, body {
   width: 40px;
   height: 40px;
   background-image: url("../images/cloz.png");
-}
-
-.arr {
-  width: 59px;
-  height: 31px;
-  background-image: url("../images/arr.png");
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  margin-left: -30px;
 }
 
 .padShow {
