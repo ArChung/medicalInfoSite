@@ -174,9 +174,9 @@ function initPop() {
 }
 
 function initScale() {
-    // $('.table').click(function(e) {
-    //     $('.container').toggleClass('bigSize');
-    // })
+    $('.table').click(function(e) {
+        $('.container').toggleClass('bigSize');
+    })
 }
 
 
@@ -192,6 +192,9 @@ function addSwipeUpDownEvent(el, upFunc, downFunc) {
         t.get(0).addEventListener('touchend', touchSwipe);
 
         function touchStart(event) {
+            if($('.container').hasClass('bigSize')){
+                return false;
+            }
             if (event.targetTouches.length != 1) {
                 return false;
             } //單點觸控
@@ -200,7 +203,10 @@ function addSwipeUpDownEvent(el, upFunc, downFunc) {
         }
 
         function touchMove(event) {
-            // event.preventDefault();
+            if($('.container').hasClass('bigSize')){
+                return false;
+            }
+            event.preventDefault();
             if (event.targetTouches.length != 1) {
                 return false;
             } //單點觸控
