@@ -5,6 +5,8 @@ $(document).ready(function() {
     initSwipeEvent();
 
     initPop();
+
+    initScale();
 });
 
 var isPlaying = false;
@@ -78,7 +80,8 @@ function initAni() {
     mom.addClass('channel_1');
 
 
-    TweenMax.to('.arr',0.6,{marginBottom:10,yoyo:true,repeat:-1,ease:Power2.easeInOut})
+    TweenMax.to('.arr', 0.6, { marginBottom: 10, yoyo: true, repeat: -1, ease: Power2.easeInOut })
+    // ani6.restart();
 
 }
 
@@ -86,6 +89,9 @@ function initAni() {
 function initSwipeEvent() {
     ChungTool.addSwipeUpDownEvent($('body'), function() {
         // prev
+        if ($('.container').hasClass('bigSize')) {
+            return;
+        }
 
         var cNow = parseInt(ChungTool.returnClassNameWithFilter(mom, 'channel_'));
         var cNext = cNow - 1;
@@ -99,7 +105,9 @@ function initSwipeEvent() {
         window['ani' + cNow].reverse(0)
 
     }, function() {
-
+        if ($('.container').hasClass('bigSize')) {
+            return;
+        }
         // next
         var cNow = parseInt(ChungTool.returnClassNameWithFilter(mom, 'channel_'));
         var cNext = cNow + 1;
@@ -116,7 +124,10 @@ function initSwipeEvent() {
 
 
 
-    $('.arr').click(function(){
+    $('.arr').click(function() {
+        if($('.container').hasClass('bigSize')){
+            return;
+        }
         // next
         var cNow = parseInt(ChungTool.returnClassNameWithFilter(mom, 'channel_'));
         var cNext = cNow + 1;
@@ -130,7 +141,15 @@ function initSwipeEvent() {
         ChungTool.removeClassWithFilter(mom, 'channel_');
         mom.addClass('channel_' + cNext);
 
-        
+
+    })
+
+
+    $('.logo').click(function() {
+        TweenMax.set('.page', { autoAlpha: 0 })
+        ChungTool.removeClassWithFilter(mom, 'channel_');
+        mom.addClass('channel_1');
+        ani1.restart();
     })
 
 
@@ -154,5 +173,8 @@ function initPop() {
     })
 }
 
-
-
+function initScale() {
+    $('.table').click(function(e) {
+        $('.container').toggleClass('bigSize');
+    })
+}
