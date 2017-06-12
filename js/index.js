@@ -77,6 +77,9 @@ function initAni() {
     ani1.restart();
     mom.addClass('channel_1');
 
+
+    TweenMax.to('.arr',0.6,{marginBottom:10,yoyo:true,repeat:-1,ease:Power2.easeInOut})
+
 }
 
 
@@ -109,6 +112,25 @@ function initSwipeEvent() {
         window['ani' + cNext].restart()
         ChungTool.removeClassWithFilter(mom, 'channel_');
         mom.addClass('channel_' + cNext);
+    })
+
+
+
+    $('.arr').click(function(){
+// next
+        var cNow = parseInt(ChungTool.returnClassNameWithFilter(mom, 'channel_'));
+        var cNext = cNow + 1;
+
+        if (cNext >= 7) {
+            return;
+        }
+
+        window['ani' + cNext].timeScale(1);
+        window['ani' + cNext].restart()
+        ChungTool.removeClassWithFilter(mom, 'channel_');
+        mom.addClass('channel_' + cNext);
+
+        
     })
 
 
