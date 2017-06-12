@@ -117,9 +117,9 @@ function initSwipeEvent() {
 }
 
 function initPop() {
-	
+
     $('.p4 .btn').click(function() {
-    	console.log(23)
+        console.log(23)
         simpleShow($('.calendarPop'));
     })
 
@@ -131,3 +131,6 @@ function initPop() {
         simpleHide($('.calendarPop'));
     })
 }
+
+
+
