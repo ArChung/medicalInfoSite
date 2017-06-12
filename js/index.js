@@ -87,7 +87,7 @@ function initAni() {
 
 
 function initSwipeEvent() {
-    ChungTool.addSwipeUpDownEvent($('body'), function() {
+    addSwipeUpDownEvent($('body'), function() {
         // prev
         if ($('.container').hasClass('bigSize')) {
             return;
@@ -178,3 +178,51 @@ function initScale() {
         $('.container').toggleClass('bigSize');
     })
 }
+
+
+function addSwipeUpDownEvent(el, upFunc, downFunc) {
+        // var touchObj = document.getElementById("index_banner_swipe");
+
+        var start_y;
+        var end_y;
+        var t = el;
+
+        t.get(0).addEventListener('touchstart', touchStart, false);
+        t.get(0).addEventListener('touchmove', touchMove, false);
+        t.get(0).addEventListener('touchend', touchSwipe);
+
+        function touchStart(event) {
+            if($('.container').hasClass('bigSize')){
+                 return false;
+            }
+            if (event.targetTouches.length != 1) {
+                return false;
+            } //單點觸控
+            start_y = end_y = event.targetTouches[0].pageY;
+
+        }
+
+        function touchMove(event) {
+            if($('.container').hasClass('bigSize')){
+                 return false;
+            }
+            event.preventDefault();
+            if (event.targetTouches.length != 1) {
+                return false;
+            } //單點觸控
+            end_y = event.targetTouches[0].pageY;
+            t.css('margin-top', end_y - start_y);
+        }
+
+        function touchSwipe(event) {
+
+
+            t.css('margin-top', 0);
+            if (end_y - start_y > 100) {
+                upFunc();
+
+            } else if (end_y - start_y < -100) {
+                downFunc();
+            }
+        }
+    }
